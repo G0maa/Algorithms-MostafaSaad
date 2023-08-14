@@ -1,3 +1,8 @@
+# Ignoring all extension-less files
+# src: https://stackoverflow.com/questions/19023550/how-do-i-add-files-without-dots-in-them-all-extension-less-files-to-the-gitign
+*
+!/**/
+!*.*
+
 .vscode
 main.cpp
-main
