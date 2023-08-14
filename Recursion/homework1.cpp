@@ -19,8 +19,8 @@ int calcPow(int val, int p)
     return 0;
   if (p == 0)
     return 1;
-  if (p == 1)
-    return val;
+  // if (p == 1) This is useless.
+  //   return val;
 
   return val * calcPow(val, p - 1);
 }
