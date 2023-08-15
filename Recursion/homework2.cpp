@@ -53,7 +53,7 @@ bool isPrefix(const string &main, const string &prefix, const int &startPos = 0)
 
 bool isPrime(int n, int divisor = 2)
 {
-  if (n == 1)
+  if (n == 1) // Doesn't handle negative numbers
     return false;
 
   if (divisor * divisor > n)
@@ -78,8 +78,10 @@ int y[] = {1, 0, 1};
 int moves = 3;
 int gridSum(int grid[100][100], int ROWS, int COLS, int row = 0, int col = 0)
 {
-  if (row >= ROWS || col >= COLS)
-    return 0;
+  // if (row >= ROWS || col >= COLS) // should finish at bottom right corner.
+  // return 0;
+  if (row == ROWS - 1 && col == COLS - 1)
+    return grid[row][col];
 
   int mx = -1;
   int mxIdx = 0;
@@ -87,6 +89,10 @@ int gridSum(int grid[100][100], int ROWS, int COLS, int row = 0, int col = 0)
   {
     if (grid[row + x[i]][col + y[i]] > mx)
     {
+      // didn't check if it is valid or not.
+      if (row + x[i] >= ROWS || col + y[i] >= COLS)
+        continue;
+
       mx = grid[row + x[i]][col + y[i]];
       mxIdx = i;
     }
