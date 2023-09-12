@@ -3,6 +3,13 @@
 
 using namespace std;
 
+// Note: int
+#define sz(i) (int)i.size()
+#define all(v) ((v).begin()), ((v).end())
+#define allR(v) ((v).rbegin()), ((v).rend())
+#define fromTo(var, from, to) for (int var = from; var < to; ++var)
+#define fromToR(var, from, to) for (int var = from; var >= to; --var)
+
 int main()
 {
   Util util;
