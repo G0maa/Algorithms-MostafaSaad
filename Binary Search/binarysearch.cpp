@@ -52,7 +52,7 @@ int lowerBound(const vector<int> &nums, const int &target)
 {
   int len = (int)nums.size();
   if (len == 0)
-    return len;
+    return len; // not sure about this handling.
 
   int start = 0, end = len - 1;
 
