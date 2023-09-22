@@ -9,6 +9,8 @@ using namespace std;
 #define allR(v) ((v).rbegin()), ((v).rend())
 #define fromTo(var, from, to) for (int var = from; var < to; ++var)
 #define fromToR(var, from, to) for (int var = from; var >= to; --var)
+#define pb push_back
+#define mp make_pair
 
 int main()
 {
