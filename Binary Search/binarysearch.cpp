@@ -21,7 +21,11 @@ int binarySearch(vector<int> &nums, int target)
   return -1;
 }
 
+// I'm trying to make a general upperBound & lowerBound functions,
+// that by changing possible() and limits, will work for any BS problem.
+
 // index of first element larger than target.
+// I couldn't generalize this function, as opposed to lowerBound.
 int upperBound(const vector<int> &nums, const int &target)
 {
   int len = (int)nums.size();
@@ -30,21 +34,28 @@ int upperBound(const vector<int> &nums, const int &target)
 
   int start = 0, end = len - 1;
 
-  int idx;
+  // ans initial value will be returned if target was not found (choose carefully!)
+  int ans = len;
+
   while (start <= end)
   {
-    idx = start + (end - start) / 2;
+    int idx = start + (end - start) / 2;
 
+    // In some problems you will need to change end & start.
     if (target < nums[idx])
-      end = idx - 1;
+      end = idx - 1, ans = idx;
     else
       start = idx + 1;
+
+    // !possible()
+    // if (nums[idx] <= target)
+    //   start = idx + 1;
+    // else
+    //   end = idx - 1, ans = idx;
   }
 
-  if (nums[idx] <= target)
-    idx++;
-
-  return idx;
+  // add one for valid upper bound
+  return ans;
 }
 
 // index of first element equal or larger than target.
@@ -52,25 +63,24 @@ int lowerBound(const vector<int> &nums, const int &target)
 {
   int len = (int)nums.size();
   if (len == 0)
-    return len; // not sure about this handling.
+    return len;
 
   int start = 0, end = len - 1;
 
-  int idx;
+  // ans initial value will be returned if target was not found (choose carefully!)
+  int ans = len;
+
   while (start <= end)
   {
-    idx = start + (end - start) / 2;
+    int idx = start + (end - start) / 2;
 
     if (target <= nums[idx])
-      end = idx - 1;
+      end = idx - 1, ans = idx;
     else
       start = idx + 1;
   }
 
-  if (nums[idx] < target)
-    idx++;
-
-  return idx;
+  return ans;
 }
 
 int main()
