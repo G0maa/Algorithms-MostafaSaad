@@ -83,6 +83,34 @@ int lowerBound(const vector<int> &nums, const int &target)
   return ans;
 }
 
+// Borrowed from Prof.
+double f(double x)
+{
+  return 4 * pow(x, 7) + 3 * pow(x, 5) - 1000;
+}
+
+// The while can be bounded by e.g. 100 iterations.
+double binarySearchRealValues(double EPS = 1e-9)
+{
+  // Set them yourself
+  double start = 0, end = 3;
+
+  // for(int i = 0; i < 100; ++i) {
+  //   // (What's inside the while loop)
+  // }
+
+  while (end - start > EPS)
+  {
+    double mid = start + (end - start) / 2;
+    if (f(mid) < 0.0)
+      start = mid;
+    else
+      end = mid;
+  }
+
+  return start;
+}
+
 int main()
 {
   Util util;
